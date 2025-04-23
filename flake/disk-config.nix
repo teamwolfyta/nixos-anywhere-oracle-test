@@ -36,6 +36,7 @@
         type = "gpt";
       };
       device = "/dev/sda";
+      imageSize  = "20G";
       type = "disk";
     };
     zpool."zroot" = {
@@ -57,10 +58,12 @@
         };
       };
       options = {
-        acltype = "posixacl";
         ashift = "12";
-        atime = "off";
         autotrim = "on";
+      };
+      rootFsOptions = {
+        acltype = "posixacl";
+        atime = "off";
         compression = "zstd";
         normalization = "none";
         xattr = "sa";
