@@ -25,9 +25,10 @@
     pkgs.gitMinimal
   ];
 
-  users.users."root".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/pisGSPtuU1/zUPCn88LU7zzbbG00xc+4M1C5lXFvB"
-  ];
+  users.users."root" = {
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/pisGSPtuU1/zUPCn88LU7zzbbG00xc+4M1C5lXFvB"];
+    password = "password";
+  };
 
   fileSystems."/".neededForBoot = true;
 
