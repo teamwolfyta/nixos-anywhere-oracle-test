@@ -2,3 +2,6 @@
 .direnv
 
 result
+
+*.qcow2
+*.raw
