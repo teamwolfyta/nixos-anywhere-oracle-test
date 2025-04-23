@@ -36,7 +36,7 @@
         type = "gpt";
       };
       device = "/dev/sda";
-      imageSize  = "20G";
+      imageSize = "20G";
       type = "disk";
     };
     zpool."zroot" = {
