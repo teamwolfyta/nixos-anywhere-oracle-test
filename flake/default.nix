@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{self, inputs, ...}: {
   systems = import inputs.systems;
 
   perSystem = {
@@ -10,13 +10,13 @@
   };
 
   flake = {
+    packages.x86_64-linux.default = self.nixosConfigurations.vm.config.system.build.diskoImagesScript;
     nixosConfigurations = {
-      "instance-20250422-0436" = inputs.nixpkgs.lib.nixosSystem {
+      "vm" = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           inputs.disko.nixosModules.disko
-          ./configuration.nix
-          ./hardware-configuration.nix
+          ./config
         ];
       };
     };

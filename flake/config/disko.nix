@@ -11,7 +11,7 @@
               type = "filesystem";
             };
             name = "boot";
-            size = "1G";
+            size = "200M";
             start = "1M";
             type = "EF00";
           };
@@ -21,7 +21,7 @@
               type = "swap";
             };
             name = "swap";
-            size = "4G";
+            size = "500M";
           };
           zfs = {
             alignment = 1;
@@ -36,7 +36,7 @@
         type = "gpt";
       };
       device = "/dev/sda";
-      imageSize = "20G";
+      imageSize = "3G";
       type = "disk";
     };
     zpool."zroot" = {

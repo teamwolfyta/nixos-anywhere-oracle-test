@@ -1,9 +1,13 @@
 # How to Launch
 
+`nix build` since the disko build is aliased to the default package
+
+sudo ./result --build-memory 32768
+
 qemu-system-x86_64 \
-        -m 1G \
+        -m 8G \
         -machine type=q35,accel=kvm \
-        -smp 1 \
+        -smp 8 \
         -drive format=raw,file=main.raw \
         -cpu host \
         -display default \
