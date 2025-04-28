@@ -15,8 +15,27 @@ in {
     zfs.forceImportRoot = mkForce true;
 
     initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "xhci_pci" "ahci"];
-      kernelModules = [];
+      #systemd.enable = false;
+      availableKernelModules = [
+        "virtio_pci"
+        "virtio_blk"
+        "scsi_mod"
+        "sd_mod"
+        "xhci_pci"
+        "ahci"
+        "ata_piix"
+        "uhci_hcd"
+      ];
+      kernelModules = [
+        "virtio_pci"
+        "virtio_blk"
+        "scsi_mod"
+        "sd_mod"
+      ];
+      #postDeviceCommands = ''
+      #  echo "Dropping to recovery shell manually" >&2
+      #  exec /bin/sh
+      #'';
     };
     kernelModules = ["kvm-amd" "zfs"];
     extraModulePackages = [];
@@ -24,7 +43,6 @@ in {
       "console=tty0"
       "console=ttyS0,115200n8"
       "boot.trace=1"
-      "loglevel=7"
       "break=initrd" # Optional: stop early for manual inspection
     ];
 

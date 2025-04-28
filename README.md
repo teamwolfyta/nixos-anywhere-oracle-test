@@ -26,10 +26,16 @@ qemu-system-x86_64 \
   -cpu host \
   -m 8G \
   -smp 4 \
-  -drive file=main.raw,format=raw,if=virtio \
+  -device virtio-scsi-pci,id=scsi \
+  -drive file=main.raw,format=raw,if=none,id=disk1 \
   -device virtio-net-pci,netdev=net0 \
   -netdev user,id=net0,hostfwd=tcp::2222-:22 \
   -nographic \
   -serial mon:stdio \
   -bios /nix/store/ypfbsa465m41zyxkcdgqhlgc7j9411di-OVMF-202411-fd/FV/OVMF.fd
 ```
+
+qemu-system-x86_64 \
+  
+  -drive file=vm.qcow2,format=qcow2,if=none,id=disk1 \
+  -device scsi-hd,drive=disk1
