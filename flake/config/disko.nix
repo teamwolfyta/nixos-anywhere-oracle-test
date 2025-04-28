@@ -62,6 +62,9 @@
         hostid=${config.networking.hostId}
         printf "\\x${hostid:0:2}\\x${hostid:2:2}\\x${hostid:4:2}\\x${hostid:6:2}" > /etc/hostid
       '';
+      postCreateHook = ''
+        zpool set multihost=on zroot
+      '';
       options = {
         ashift = "12";
         autotrim = "on";

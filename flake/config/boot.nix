@@ -43,7 +43,7 @@ in {
       "console=tty0"
       "console=ttyS0,115200n8"
       "boot.trace=1"
-      "break=initrd" # Optional: stop early for manual inspection
+      "zfs_multihost=1"
     ];
 
     loader = {
